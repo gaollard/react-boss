@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '@src/asset/css/common.css';
-import LoginComponent from '@src/page/login/login'
+import './asset/css/common.css';
+import LoginComponent from './page/login/login'
 
 class App extends Component {
   render() {

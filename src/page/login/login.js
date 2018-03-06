@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Button, WingBlank} from 'antd-mobile';
 import {List, InputItem} from 'antd-mobile';
 import './login.css'
-import LogoImg from '@src/asset/img/logo.png'
+import LogoImg from '../../asset/img/logo.png'
 
 export default class Login extends Component {
 

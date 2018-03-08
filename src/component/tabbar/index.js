@@ -14,11 +14,11 @@ export default class Navlink extends Component {
     const navList = this.props.data.filter(v => !v.hide);
     const {pathname} = this.props.location;
     return (
-      <TabBar>{
+      <TabBar tintColor="#1DA57A">{
         navList.map(v => {
           return <TabBar.Item
-            icon={{uri: require(`./img/${v.icon}.png`)}}
-            selectedIcon={{uri: require(`./img/${v.icon}-active.png`)}}
+            icon={{uri: require(`./img/${v.icon}.svg`)}}
+            selectedIcon={{uri: require(`./img/${v.icon}-active.svg`)}}
             title={v.text}
             key={v.text}
             selected={pathname === v.path}

@@ -1,0 +1,17 @@
+.mi-header {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.mi-footer {
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.mi-content {
+  padding-top: 45px;
+}

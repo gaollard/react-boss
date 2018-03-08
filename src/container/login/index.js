@@ -1,17 +1,23 @@
-import React, {Component} from 'react';
-import {Button, WingBlank} from 'antd-mobile';
-import {List, InputItem} from 'antd-mobile';
+import React, {Component} from 'react'
+import {Button, WingBlank, List, InputItem} from 'antd-mobile'
+
+import { connect } from 'react-redux'
+import { login } from '../../redux/user.redux'
+import { withRouter, Redirect } from 'react-router-dom'
+
 import './login.css'
 import LogoImg from '../../asset/img/logo.png'
 
+@withRouter
+@connect(
+  state => state,
+  { login }
+)
 export default class Login extends Component {
 
   constructor(props) {
-    super(props);
-    this.state = {
-      mobile: '',
-      pwd: ''
-    }
+    super(props)
+    this.state = {mobile: '', pwd: ''}
     this.onChange = this.onChange.bind(this)
   }
 
@@ -20,6 +26,10 @@ export default class Login extends Component {
   }
 
   render() {
+    const { redirectUrl } = this.props.user;
+    if (redirectUrl !== '') {
+      return <Redirect to={redirectUrl}/>
+    }
     return (
       <div className="page-login">
         <img className="logo" src={ LogoImg } alt="BOSS直聘"/>
@@ -30,16 +40,16 @@ export default class Login extends Component {
               type="phone"
               placeholder="手机号码"
               onChange={ v => this.onChange('mobile', v)}
-              value={this.state.mobile}></InputItem>
+              value={this.state.mobile}/>
             <InputItem
               clear
               type="number"
               placeholder="登录密码"
               onChange={(v) => this.onChange('pwd', v)}
-              value={this.state.pwd}></InputItem>
+              value={this.state.pwd}/>
           </List>
           <WingBlank className="btn-submit">
-            <Button type="primary">登录</Button>
+            <Button type="primary" onClick={ this.props.login }>登录</Button>
           </WingBlank>
         </div>
       </div>

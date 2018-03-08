@@ -7,6 +7,7 @@ const fileLoaderMatcher = function (rule) {
 module.exports = function override(config, env) {
 
   config = injectBabelPlugin(['import', { libraryName: 'antd-mobile', style: true }], config);
+  console.log(config);
   
   // customize theme
   config.module.rules[1].oneOf.unshift(

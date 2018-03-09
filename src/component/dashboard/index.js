@@ -43,14 +43,14 @@ export default class Dashboard extends Component {
     if (pathname !== '/') {
       return (
         <div className="page-wrap">
-          <div className="mi-header">
-            <NavBar>{navList.find(v => v.path === pathname).text}</NavBar>
-          </div>
-          <div className="mi-content">
+          {/*<div className="mi-header">*/}
+            {/*/!*<NavBar>{navList.find(v => v.path === pathname).text}</NavBar>*!/*/}
+          {/*</div>*/}
+          {/*<div className="mi-content">*/}
             {<Switch>
               {navList.map(v => <Route path={v.path} component={v.component} key={v.path}/>)}
             </Switch>}
-          </div>
+          {/*</div>*/}
           <div className="mi-footer">
             <TabBar data={navList}/>
           </div>

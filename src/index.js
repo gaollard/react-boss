@@ -5,7 +5,7 @@ import {Provider} from 'react-redux'
 import {createStore, applyMiddleware, compose} from 'redux'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
-import './index.css'
+import './asset/css/common.css'
 import Auth from './component/auth'
 import Login from './container/login'
 import DashBoard from './component/dashboard'
@@ -21,7 +21,7 @@ const store = createStore(reducers, compose(
   ReactDOM.render(<Provider store={store}>
     <BrowserRouter>
       <div>
-        <Auth></Auth>
+        <Auth/>
         <Switch>
           <Route path="/login" exact component={Login}/>
           <Route component={DashBoard}/>

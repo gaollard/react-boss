@@ -1,0 +1,30 @@
+.cmp-me .avatar-wrap {
+    height: 160px;
+    background: url("./bg.png");
+    background-size: contain;
+}
+
+.cmp-me .avatar-icon {
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.cmp-me .info {
+    float: left;
+    margin-top: 56px;
+    margin-left: 10px;
+}
+
+.cmp-me .name {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cmp-me .position {
+    color: #666;
+    font-size: 12px;
+}

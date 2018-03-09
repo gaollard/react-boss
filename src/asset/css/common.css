@@ -3,6 +3,32 @@
   margin: 0;
 }
 
+/**
+ * 重置字体
+ * 表单有被浏览器重置
+ */
+body, button, input, select, table, textarea {
+  font: 14px/1.5 Tahoma,Helvetica,Arial,sans-serif;
+  font-family: Microsoft YaHei,Tahoma,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/**
+ * none：文本不能被选择
+ * text：可以选择文本
+ * all：当所有内容作为一个整体时可以被选择。如果双击或者在上下文上点击子元素，那么被选择的部分将是以该子元素向上回溯的最高祖先元素。
+ * element：可以选择文本，但选择范围受元素边界的约束
+*/
 .am-button {
   user-select: none;
+}
+
+
+/**
+ * normal 使用浏览器默认的换行规则。
+ * break-all 允许在单词内换行。
+ * keep-all	只能在半角空格或连字符处换行。
+ */
+p, div, li, textarea {
+  word-break: break-all;
 }

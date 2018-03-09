@@ -1,15 +1,13 @@
 import React, {Component} from 'react'
-
-import {NavBar} from 'antd-mobile'
+import {List} from 'antd-mobile'
 import {connect} from 'react-redux'
-
 import avatarImg from './avatar.png'
 import './index.css'
 
 @connect(state => state, {})
 export default class Me extends Component {
   render() {
-    console.log(this.props);
+    const Item = List.Item;
     const {user} = this.props;
     return (
       <div className="cmp-me">
@@ -19,6 +17,40 @@ export default class Me extends Component {
             <p className="name">{user.nickname}</p>
             <p className="position">web前端工程师</p>
           </div>
+        </div>
+        <ul className="grid-list">
+          <li className="grid-item">
+            <i className="grid-icon iconfont icon-commodity"></i>
+            <div className="grid-text">沟通</div>
+          </li>
+          <li className="grid-item">
+            <i className="grid-icon iconfont icon-activity"></i>
+            <div className="grid-text">面试</div>
+          </li>
+          <li className="grid-item">
+            <i className="grid-icon iconfont icon-collection"></i>
+            <div className="grid-text">投递</div>
+          </li>
+          <li className="grid-item">
+            <i className="grid-icon iconfont icon-integral"></i>
+            <div className="grid-text">兴趣</div>
+          </li>
+        </ul>
+        <div className="link-list">
+          <Item
+            className="link-item"
+            thumb={<i className="iconfont icon-activity"></i>}
+            arrow="horizontal"
+          >关注公司</Item>
+          <Item
+            className="link-item"
+            thumb={<i className="iconfont icon-document"></i>}
+            arrow="horizontal">求职意向</Item>
+          <Item
+            className="link-item"
+            thumb={<i className="iconfont icon-service"></i>}
+            arrow="horizontal"
+          >附件简历</Item>
         </div>
       </div>
     )

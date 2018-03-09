@@ -1,30 +1,67 @@
 .cmp-me .avatar-wrap {
-    height: 160px;
-    background: url("./bg.png");
-    background-size: contain;
+  height: 160px;
+  background: url("./bg.png");
+  background-size: contain;
 }
 
 .cmp-me .avatar-icon {
-    float: left;
-    width: 60px;
-    height: 60px;
-    margin-top: 50px;
-    margin-left: 20px;
+  float: left;
+  width: 60px;
+  height: 60px;
+  margin-top: 50px;
+  margin-left: 20px;
 }
 
 .cmp-me .info {
-    float: left;
-    margin-top: 56px;
-    margin-left: 10px;
+  float: left;
+  margin-top: 56px;
+  margin-left: 10px;
 }
 
 .cmp-me .name {
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .cmp-me .position {
-    color: #666;
-    font-size: 12px;
+  color: #666;
+  font-size: 12px;
+}
+
+.link-list {
+  margin-top: 8px;
+}
+
+.link-item .iconfont {
+  color: #888;
+}
+
+.grid-list {
+  display: flex;
+  align-items: center;
+}
+
+.grid-item {
+  display: flex;
+  flex:1;
+  height: 60px;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.grid-item .grid-icon {
+  margin-top: 6px;
+  font-size: 18px;
+  color: rgb(29, 165, 122);
+}
+
+.grid-item .grid-text {
+  font-size: 14px;
+}
+
+.am-list-item .am-list-line .am-list-content {
+  font-size: 14px;
 }

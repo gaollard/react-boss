@@ -1,0 +1,46 @@
+.item-hd {
+  display: flex;
+  margin-top: 8px;
+  justify-content: space-between;
+}
+
+.item-md {
+  overflow: hidden;
+  display: flex;
+  margin-top: 8px;
+  color: #666;
+  align-items: center;
+}
+
+.tag-list {
+  margin-left: 10px;
+}
+
+.tag-item {
+  display: inline-block;
+  padding: 2px 6px;
+  margin-right: 6px;
+  color: #666;
+  font-size: 12px;
+  border-radius: 2px;
+  background-color: #dcece7;
+}
+
+.item-contact {
+  text-align: right;
+}
+
+.item-avatar {
+  border-radius: 50%;
+}
+
+.item-btm {
+  display: flex;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  align-items: center;
+}
+
+.contact-name {
+  margin-left: 6px;
+}

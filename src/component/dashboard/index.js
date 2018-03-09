@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Switch, Route, withRouter, Redirect} from 'react-router-dom';
-import {NavBar} from 'antd-mobile';
-
 import TabBar from '../tabbar'
-import Me from '../../container/me/index'
-import Msg from '../../container/msg/index'
-import Boss from '../../container/boss/index'
-import Genius from '../../container/genius/index'
-
+import Me from '../../container/me'
+import Msg from '../../container/msg'
+import Boss from '../../container/boss'
+import Genius from '../../container/genius'
+import Position from '../../container/position'
 import './index.css'
+
+function Company() {
+  return <h2>Company</h2>
+}
 
 @withRouter
 @connect(state => state, {})
@@ -18,10 +20,15 @@ export default class Dashboard extends Component {
     const user = this.props.user;
     let pathname = this.props.location.pathname;
     const navList = [{
-      path: '/boss',
-      text: 'Boss',
+      path: '/position',
+      text: '职位',
       icon: 'boss',
-      component: Boss,
+      component: Position
+    }, {
+      path: '/company',
+      text: '公司',
+      icon: 'manage',
+      component: Company,
       hide: user.type === 'boss'
     }, {
       path: '/genius',
@@ -43,14 +50,9 @@ export default class Dashboard extends Component {
     if (pathname !== '/') {
       return (
         <div className="page-wrap">
-          {/*<div className="mi-header">*/}
-            {/*/!*<NavBar>{navList.find(v => v.path === pathname).text}</NavBar>*!/*/}
-          {/*</div>*/}
-          {/*<div className="mi-content">*/}
-            {<Switch>
-              {navList.map(v => <Route path={v.path} component={v.component} key={v.path}/>)}
-            </Switch>}
-          {/*</div>*/}
+          {<Switch>
+            {navList.map(v => <Route path={v.path} component={v.component} key={v.path}/>)}
+          </Switch>}
           <div className="mi-footer">
             <TabBar data={navList}/>
           </div>

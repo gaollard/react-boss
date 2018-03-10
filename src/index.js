@@ -8,6 +8,8 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import './asset/css/common.css'
 import Auth from './component/auth'
 import Login from './container/login'
+import Chat from './container/chat'
+import Update from './container/update'
 import DashBoard from './component/dashboard'
 
 import reducers from './redux/reducers'
@@ -23,7 +25,13 @@ const store = createStore(reducers, compose(
       <div>
         <Auth/>
         <Switch>
+          {/*<Route path="/bossinfo" component={BossInfo}></Route>*/}
+          {/*<Route path="/geniusinfo" component={ GeniusInfo}></Route>*/}
+          {/*<Route path="/register" component={Register}/>*/}
+          {/*<Route path="/login" component={Login}/>*/}
           <Route path="/login" exact component={Login}/>
+          <Route path="/update" exact component={Update}/>
+          <Route path="/chat/:userId" component={Chat}/>
           <Route component={DashBoard}/>
         </Switch>
       </div>

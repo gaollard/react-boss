@@ -1,0 +1,38 @@
+.cmp-companys .item-avatar {
+  float: left;
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+}
+
+.cmp-companys .item-companyName ,
+.cmp-companys .item-companyAddress {
+  margin-left: 52px;
+}
+.cmp-companys .tag-list {
+  margin-top: 10px;
+}
+
+.cmp-companys .tag-item {
+  display: inline-block;
+  padding: 2px 6px;
+  margin-right: 6px;
+  color: #666;
+  font-size: 12px;
+  border-radius: 2px;
+  background-color: #dcece7;
+}
+
+.cmp-companys .item-hd {
+  margin-top: 6px;
+}
+
+.cmp-companys .item-btm {
+  margin-top: 10px;
+  margin-bottom: 6px;
+  color: #666;
+}
+
+.cmp-companys .hot-job {
+  color: #1DA57A;
+}

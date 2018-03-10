@@ -1,42 +1,20 @@
 import React, {Component} from 'react'
 import {NavBar, ListView, List} from 'antd-mobile'
-import {api} from '../../config/index'
-import './index.css'
+import mockData from './data.json';
+import css from './index.css'
 
 export default class Position extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [{
-        title: 'web前端开发工程师',
-        salary: '15k-30k',
-        company: '腾讯科技',
-        relateTags: [{
-          key: '深圳福田'
-        }, {
-          key: '上市'
-        }, {
-          key: '本科'
-        }],
-        contact: {
-          name: '滕茂庆',
-          position: 'HR'
-        }
-      }]
+      list: []
     }
   }
 
   componentDidMount() {
-    // api.users({type: 'boss'}).then(res => {
-    //   if (res.code === '0') {
-    //     this.setState({
-    //       userList: res.data.list
-    //     })
-    //   }
-    // })
     const {list} = this.state;
     for (let i = 0; i < 10; i++) {
-      list.push(list[0])
+      list.push(mockData)
     }
     this.setState({list})
   }
@@ -45,10 +23,8 @@ export default class Position extends Component {
     const Item = List.Item;
     const {list} = this.state;
     return (
-      <div className="cmp-msg">
-        <div className="mi-header">
-          <NavBar>Boss</NavBar>
-        </div>
+      <div className="cmp-positions">
+        <div className="mi-header"><NavBar>职位</NavBar></div>
         <div className="mi-content">
           {
             list.map((v, index) => {
@@ -64,9 +40,6 @@ export default class Position extends Component {
                     <div className="tag-list">
                       {tags.map(v => <div className="tag-item" key={v.key}>{v.key}</div>)}
                     </div>
-                    {/*<div className="item-contact">*/}
-                    {/*<img className="item-avatar" src={require('./avatar.jpg')} alt=""/>*/}
-                    {/*</div>*/}
                   </div>
                   <div className="item-btm">
                     <img className="item-avatar" src={require('./avatar.jpg')} alt=""/>

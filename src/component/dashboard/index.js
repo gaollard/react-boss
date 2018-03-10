@@ -7,11 +7,8 @@ import Msg from '../../container/msg'
 import Boss from '../../container/boss'
 import Genius from '../../container/genius'
 import Position from '../../container/position'
+import Companys from '../../container/companys'
 import './index.css'
-
-function Company() {
-  return <h2>Company</h2>
-}
 
 @withRouter
 @connect(state => state, {})
@@ -28,7 +25,13 @@ export default class Dashboard extends Component {
       path: '/company',
       text: '公司',
       icon: 'manage',
-      component: Company,
+      component: Companys,
+      hide: user.type === 'boss'
+    }, {
+      path: '/boss',
+      text: 'Boss',
+      icon: 'manage',
+      component: Boss,
       hide: user.type === 'boss'
     }, {
       path: '/genius',

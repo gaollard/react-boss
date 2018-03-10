@@ -1,8 +1,8 @@
 import cookie from 'js-cookie'
 import {api} from '../config/index'
 
-const ERROR = 'ERROR'
-const LOAD_USER_DATA = 'LOGIN_SUCCESS'
+const ERROR = 'ERROR';
+const LOAD_USER_DATA = 'LOGIN_SUCCESS';
 
 let userInfo = cookie.get('userInfo');
 try {
@@ -19,6 +19,7 @@ const initState = {
   nickname: "",
   avatar: "",
   type: '',
+  _id: '',
   redirectUrl: '',
   ...userInfo
 };
@@ -33,12 +34,12 @@ export function user(state = initState, action) {
         errMsg: '',
         ...action.payload.userInfo,
         redirectUrl: '/genius'
-      }
+      };
     case ERROR:
       return {
         ...state,
         errMsg: action.payload
-      }
+      };
     default:
       return state
   }

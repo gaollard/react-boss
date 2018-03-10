@@ -1,9 +1,22 @@
 .cmp-me .avatar-wrap {
+  position: relative;
   height: 160px;
   background: url("./bg.png");
   background-size: contain;
 }
+.cmp-me .btn-wrap {
+  position: absolute;
+  right: 20px;
+  top: 64px;
+}
 
+.cmp-me .btn-fill {
+  padding: 4px 6px;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 2px;
+  border: 1PX solid #fff;
+}
 .cmp-me .avatar-icon {
   float: left;
   width: 60px;

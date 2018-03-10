@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {List} from 'antd-mobile'
+import {List, Button} from 'antd-mobile'
 import {connect} from 'react-redux'
 import avatarImg from './avatar.png'
 import './index.css'
@@ -16,6 +16,12 @@ export default class Me extends Component {
           <div className="info">
             <p className="name">{user.nickname}</p>
             <p className="position">web前端工程师</p>
+          </div>
+          <div className="btn-wrap">
+            <div className="btn-fill" onClick={() => {
+              this.props.history.push('/update')
+            }}>完善信息
+            </div>
           </div>
         </div>
         <ul className="grid-list">

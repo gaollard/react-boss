@@ -3,7 +3,17 @@
   margin-bottom: 30px;
 }
 
+.cmp-update .avatar-loader {
+  margin-top: 16px;
+}
+
 .cmp-update .form-wrap {
-  margin-top: 30%;
+  margin-top: 10%;
   background-color: #fff;
+}
+
+.cmp-update .upload-wrap {
+  width: 120px;
+  height: 120px;
+  border: 1px dashed crimson;
 }

@@ -1,3 +1,29 @@
 .cmp-chat .am-list-line:after {
   /*display: none!important;*/
 }
+
+.cmp-chat .mi-footer {
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.cmp-chat .emoji-wrap {
+  z-index: 3;
+  position: fixed;
+  bottom: 44px;
+  width: 100%;
+}
+
+.cmp-chat .am-grid-icon {
+  display: none;
+}
+
+.cmp-chat .btn-emoji {
+  margin-left: 10px;
+}
+
+.cmp-chat .btn-send {
+  margin-left: 4px;
+}

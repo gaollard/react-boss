@@ -28,11 +28,14 @@ const initState = {
 export function user(state = initState, action) {
   switch (action.type) {
     case LOAD_USER_DATA:
-      cookie.set('userInfo', action.payload.userInfo);
-      return {
+      let data = {
         ...state,
+        ...action.payload.userInfo
+      };
+      cookie.set('userInfo', data);
+      return {
+        ...data,
         errMsg: '',
-        ...action.payload.userInfo,
         redirectUrl: '/genius'
       };
     case ERROR:
@@ -46,11 +49,26 @@ export function user(state = initState, action) {
 }
 
 // **** actions ****
-export function login() {
+export function login(params) {
   return async dispatch => {
-    let ret = await api.login();
+    let ret = await api.login(params);
     if (ret.code === '0') {
       dispatch({type: LOAD_USER_DATA, payload: ret.data})
+    } else {
+      dispatch({type: ERROR, payload: ret.msg})
+    }
+  }
+}
+
+export function updateUserInfo(params) {
+  return async dispatch => {
+    let ret = await api.update(params);
+    if (ret.code === '0') {
+      dispatch({
+        type: LOAD_USER_DATA, payload: {
+          userInfo: params
+        }
+      })
     } else {
       dispatch({type: ERROR, payload: ret.msg})
     }

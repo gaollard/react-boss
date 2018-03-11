@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {Button, WingBlank, List, InputItem} from 'antd-mobile'
 
-import { connect } from 'react-redux'
-import { login } from '../../redux/user.redux'
-import { withRouter, Redirect } from 'react-router-dom'
+import {connect} from 'react-redux'
+import {login} from '../../redux/user.redux'
+import {withRouter, Redirect} from 'react-router-dom'
 
 import './login.css'
 import LogoImg from '../../asset/img/logo.png'
@@ -11,35 +11,40 @@ import LogoImg from '../../asset/img/logo.png'
 @withRouter
 @connect(
   state => state,
-  { login }
+  {login}
 )
 export default class Login extends Component {
 
   constructor(props) {
-    super(props)
-    this.state = {mobile: '', pwd: ''}
-    this.onChange = this.onChange.bind(this)
+    super(props);
+    this.state = {mobile: '', pwd: ''};
+    this.onChange = this.onChange.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
-  onChange (key, value) {
+  onChange(key, value) {
     this.setState({[key]: value})
   }
 
+  handleLogin() {
+    this.props.login(this.state);
+  }
+
   render() {
-    const { redirectUrl } = this.props.user;
+    const {redirectUrl} = this.props.user;
     if (redirectUrl !== '') {
       return <Redirect to={redirectUrl}/>
     }
     return (
       <div className="page-login">
-        <img className="logo" src={ LogoImg } alt="BOSS直聘"/>
+        <img className="logo" src={LogoImg} alt="BOSS直聘"/>
         <div className="login-form">
           <List>
             <InputItem
               clear
               type="phone"
               placeholder="手机号码"
-              onChange={ v => this.onChange('mobile', v)}
+              onChange={v => this.onChange('mobile', v)}
               value={this.state.mobile}/>
             <InputItem
               clear
@@ -49,7 +54,7 @@ export default class Login extends Component {
               value={this.state.pwd}/>
           </List>
           <WingBlank className="btn-submit">
-            <Button type="primary" onClick={ this.props.login }>登录</Button>
+            <Button type="primary" onClick={() => this.handleLogin()}>登录</Button>
           </WingBlank>
         </div>
       </div>

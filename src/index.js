@@ -31,7 +31,7 @@ const store = createStore(reducers, compose(
           {/*<Route path="/login" component={Login}/>*/}
           <Route path="/login" exact component={Login}/>
           <Route path="/update" exact component={Update}/>
-          <Route path="/chat/:userId" component={Chat}/>
+          <Route path="/chat/:from" component={Chat}/>
           <Route component={DashBoard}/>
         </Switch>
       </div>

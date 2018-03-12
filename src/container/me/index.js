@@ -1,18 +1,22 @@
 import React, {Component} from 'react'
 import {List, Button} from 'antd-mobile'
 import {connect} from 'react-redux'
-import avatarImg from './avatar.png'
+import {host} from '../../config/'
+import defaultAvatar from './avatar.png'
+import {loginOut} from '../../redux/user.redux'
+import { Redirect } from 'react-router-dom'
 import './index.css'
 
-@connect(state => state, {})
+@connect(state => state, {loginOut})
 export default class Me extends Component {
   render() {
     const Item = List.Item;
     const {user} = this.props;
+    const avatar = user.avatar ? `${host}uploads/${user.avatar}` : defaultAvatar;
     return (
       <div className="cmp-me">
         <div className="avatar-wrap">
-          <img className="avatar-icon" src={avatarImg} alt=""/>
+          <img className="avatar-icon" src={avatar} alt=""/>
           <div className="info">
             <p className="name">{user.nickname}</p>
             <p className="position">web前端工程师</p>
@@ -57,6 +61,15 @@ export default class Me extends Component {
             thumb={<i className="iconfont icon-service"></i>}
             arrow="horizontal"
           >附件简历</Item>
+          <Item
+            className="link-item"
+            thumb={<i className="iconfont icon-service"></i>}
+            arrow="horizontal"
+            onClick={() => {
+              this.props.loginOut();
+              this.props.history.push('/login');
+            }}
+          >退出登录</Item>
         </div>
       </div>
     )

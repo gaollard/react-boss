@@ -1,5 +1,6 @@
 import io from 'socket.io-client';
 import request from '../utils/request';
+import {api} from '../config';
 
 // 获取聊天列表
 const MSG_LIST = 'MSG_LIST';
@@ -9,6 +10,7 @@ const MSG_RECEIVE = 'MSG_RECEIVE';
 const MSG_READ = 'MSG_READ';
 // 链接断开
 const MSG_DISCONNECT = 'MSG_DISCONNECT';
+const ERROR = 'ERROR';
 
 const socket = io('ws://39.108.138.156:3000');
 socket.on('disconnect', res => {
@@ -16,7 +18,7 @@ socket.on('disconnect', res => {
 });
 
 const initState = {
-  messages: [],
+  msgs: [],
   users: {},
   unread: 0
 };
@@ -24,34 +26,37 @@ const initState = {
 export function chat(state = initState, action) {
   switch (action.type) {
     case MSG_LIST:
-      const {users, messages} = action.payload;
+      const {users, msgs} = action.payload;
       return {
         ...state,
-        messages,
+        msgs,
         users,
-        unread: messages.filter(v => !v.read && action.payload.userId === v.to).length,
+        unread: msgs.filter(v => !v.read && action.payload.userId === v.to).length,
+      };
+    case ERROR:
+      return {
+        ...state,
+        msg: action.payload
       };
     default:
       return state
   }
 }
 
-// // 获取聊天列表
-// export function getMsgList(params) {
-//   return (dispatch, getState) => {
-//     request
-//       .get('/user/messageList', params)
-//       .then(res => {
-//         const userId = getState().user._id;
-//         let payload = res.data;
-//         payload.userId = userId;
-//         dispatch({type: MSG_LIST, payload})
-//       })
-//       .catch(err => {
-//         console.log(err)
-//       })
-//   }
-// }
+export function getMsgList(params = {}) {
+  return async (dispatch, getState) => {
+    params.userId = getState().user._id;
+    let res = await api.getMsgs(params);
+    if (res.code === '0') {
+      const userId = getState().user._id;
+      let payload = res.data;
+      payload.userId = userId;
+      dispatch({type: MSG_LIST, payload})
+    } else {
+      dispatch({type: ERROR, payload: res.msg})
+    }
+  }
+}
 
 // 发送信息
 export function sendMsg({from, to, content}) {
@@ -64,7 +69,6 @@ export function sendMsg({from, to, content}) {
 export function receiveMsg() {
   return (dispatch, getState) => {
     socket.on('chatMessageFromServer', data => {
-      console.log(data);
       dispatch({
         type: MSG_RECEIVE,
         payload: data,
@@ -74,15 +78,15 @@ export function receiveMsg() {
   }
 }
 
-// // 处理断开链接
-// export function onDisconnect() {
-//   return dispatch => {
-//     socket.on('disconnect', res => {
-//       console.log(res);
-//     });
-//   }
-// }
-//
+// 处理断开链接
+export function onDisconnect() {
+  return dispatch => {
+    socket.on('disconnect', res => {
+      console.log(res);
+    });
+  }
+}
+
 // export function readMsg(from) {
 //   return (dispatch, getState) => {
 //     const userId = getState().user._id;

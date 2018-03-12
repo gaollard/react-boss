@@ -3,6 +3,7 @@ import {api} from '../config/index'
 
 const ERROR = 'ERROR';
 const LOAD_USER_DATA = 'LOGIN_SUCCESS';
+const USER_LOGIN_OUT = 'USER_LOGIN_OUT';
 
 let userInfo = cookie.get('userInfo');
 try {
@@ -43,6 +44,17 @@ export function user(state = initState, action) {
         ...state,
         errMsg: action.payload
       };
+    case USER_LOGIN_OUT:
+      return {
+        errMsg: '',
+        userkey: '',
+        mobile: "",
+        nickname: "",
+        avatar: "",
+        type: '',
+        _id: '',
+        redirectUrl: '/login'
+      };
     default:
       return state
   }
@@ -57,6 +69,14 @@ export function login(params) {
     } else {
       dispatch({type: ERROR, payload: ret.msg})
     }
+  }
+}
+
+// 退出登录
+export function loginOut() {
+  cookie.remove('userInfo');
+  return {
+    type: USER_LOGIN_OUT
   }
 }
 

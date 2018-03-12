@@ -23,6 +23,7 @@
   height: 60px;
   margin-top: 50px;
   margin-left: 20px;
+  border-radius: 50%;
 }
 
 .cmp-me .info {

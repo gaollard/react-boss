@@ -32,7 +32,7 @@ export default class Login extends Component {
 
   render() {
     const {redirectUrl} = this.props.user;
-    if (redirectUrl !== '') {
+    if (redirectUrl !== '' && redirectUrl !== '/login') {
       return <Redirect to={redirectUrl}/>
     }
     return (

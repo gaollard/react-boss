@@ -45,5 +45,8 @@ export const api = {
       data: params,
       headers: {'Content-Type': 'multipart/form-data'}
     })
+  },
+  getMsgs (params) {
+    return request.post(`${host}chat/msgs`, params)
   }
 };

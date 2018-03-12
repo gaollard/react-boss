@@ -8,11 +8,15 @@ import Boss from '../../container/boss'
 import Genius from '../../container/genius'
 import Position from '../../container/position'
 import Companys from '../../container/companys'
+import { getMsgList } from '../../redux/chat.redux'
 import './index.css'
 
 @withRouter
-@connect(state => state, {})
+@connect(state => state, {getMsgList})
 export default class Dashboard extends Component {
+  componentDidMount () {
+    this.props.getMsgList();
+  }
   render() {
     const user = this.props.user;
     let pathname = this.props.location.pathname;

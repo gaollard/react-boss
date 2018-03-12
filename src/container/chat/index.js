@@ -12,8 +12,8 @@ const emoji = data.emoji.split(' ').filter(v => v).map(text => {
 });
 
 @connect(state => state, {
-  loadBosses,
   sendMsg,
+  loadBosses,
   receiveMsg
 })
 export default class Position extends Component {

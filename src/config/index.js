@@ -46,7 +46,12 @@ export const api = {
       headers: {'Content-Type': 'multipart/form-data'}
     })
   },
-  getMsgs (params) {
+  // 加载信息
+  getMsgs (params = {}) {
     return request.post(`${host}chat/msgs`, params)
+  },
+  // 获取公司列表
+  getCompanyList () {
+    return request.get(`${host}company/`)
   }
 };

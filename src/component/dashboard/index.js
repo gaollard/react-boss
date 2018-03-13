@@ -8,15 +8,19 @@ import Boss from '../../container/boss'
 import Genius from '../../container/genius'
 import Position from '../../container/position'
 import Companys from '../../container/companys'
-import { getMsgList } from '../../redux/chat.redux'
+import Chat from '../../container/chat';
+import {getMsgList, receiveMsg} from '../../redux/chat.redux'
 import './index.css'
 
 @withRouter
-@connect(state => state, {getMsgList})
+@connect(state => state, {getMsgList, receiveMsg})
 export default class Dashboard extends Component {
-  componentDidMount () {
+
+  componentDidMount() {
+    this.props.receiveMsg();
     this.props.getMsgList();
   }
+
   render() {
     const user = this.props.user;
     let pathname = this.props.location.pathname;
@@ -30,7 +34,7 @@ export default class Dashboard extends Component {
       text: '公司',
       icon: 'manage',
       component: Companys,
-      hide: user.type === 'boss'
+      // hide: user.type === 'boss'
     }, {
       path: '/boss',
       text: 'Boss',

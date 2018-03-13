@@ -1,8 +1,16 @@
 import React, {Component} from 'react'
-import {NavBar, ListView, List} from 'antd-mobile'
+import {NavBar, ListView, List, Badge} from 'antd-mobile'
 import {connect} from 'react-redux'
 import {loadBosses} from "../../redux/boss.redux"
+import {host} from "../../config/index"
 import './index.css'
+
+const Item = List.Item;
+const Brief = Item.Brief;
+
+const getLast = (arr = []) => {
+  return arr[arr.length - 1];
+};
 
 @connect(state => state, {loadBosses})
 export default class Msg extends Component {
@@ -15,15 +23,16 @@ export default class Msg extends Component {
   }
 
   render() {
-    const Item = List.Item;
-    const userList = this.props.boss.list;
-    const msgs = this.props.chat.msgs;
-    const group = {};
-    msgs.forEach(i => {
-      if (!group[i.chatId]) {
-        group[i.chatId] = []
-      }
-      group[i.chatId].push(i)
+    const {user, chat, history} = this.props;
+    const msgGroup = {};
+    chat.msgs.forEach(v => {
+      msgGroup[v.chatId] = msgGroup[v.chatId] || [];
+      msgGroup[v.chatId].push(v);
+    });
+    const chatList = Object.values(msgGroup).sort((a, b) => {
+      const a_last = getLast(a);
+      const b_last = getLast(b);
+      return b_last.createTime - a_last.createTime;
     });
     return (
       <div className="cmp-bosses">
@@ -31,28 +40,21 @@ export default class Msg extends Component {
           <NavBar>Boss</NavBar>
         </div>
         <div className="mi-content">{
-          userList.map(v => {
-            console.log(v);
-            return null
-            // return (
-            //   {/*<Item*/}
-            //     {/*key={v._id}*/}
-            //     {/*onClick={() => {*/}
-            //       {/*this.props.history.push(`/chat/${v._id}`)*/}
-            //     {/*}}*/}
-            //   {/*>*/}
-            //     {/*<div className="item-hd">*/}
-            //       {/*<img className="item-avatar" src={require('./avatar.jpg')}/>*/}
-            //       {/*<div className="item-hd-cont">*/}
-            //         {/*<div className="item-partner">*/}
-            //           {/*<span className="msg-name">{v.mobile}</span>*/}
-            //           {/*<span className="msg-time">2018/2/27</span>*/}
-            //         {/*</div>*/}
-            //         {/*<div className="msg-cont">{'我们分手吧'}</div>*/}
-            //       {/*</div>*/}
-            //     {/*</div>*/}
-            //   {/*</Item>*/}
-            // )
+          chatList.map((v, index) => {
+            const last = getLast(v);
+            const unread = v.filter(v => v.to === user._id && !v.read);
+            return (
+              <Item
+                key={index}
+                arrow="horizontal"
+                thumb={host + 'uploads/' + user.avatar}
+                extra={unread.length}
+                onClick={() => history.push(`/chat/${last.from}`)}
+              >
+                <div className="user-name">{user.nickname}</div>
+                <Brief>{last.content}</Brief>
+              </Item>
+            )
           })
         }</div>
       </div>

@@ -1,0 +1,86 @@
+.page-firm .firm-bg{
+  width: 100%;
+  display: block;
+}
+
+.page-firm .firm-sketch {
+  overflow: hidden;
+  padding: 10px;
+  background: #fff;
+}
+
+.page-firm .firm-logo-wrap {
+  float: left;
+}
+
+.page-firm .firm-avatar {
+  width: 58px;
+  height: 58px;
+}
+
+.page-firm .firm-primary {
+  float: left;
+  margin-left: 10px;
+  color: #666;
+}
+
+.page-firm .firm-primary h1 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.page-firm .main-tab {
+  overflow: hidden;
+  display: flex;
+  height: 50px;
+  margin-top: 10px;
+  background: #fff;
+  border-bottom: 1px #ddd solid;
+}
+
+.page-firm .main-tab li {
+  flex:1;
+  line-height: 50px;
+  text-align: center;
+}
+
+.page-firm .tab-box {
+  padding: 0 16px;
+  padding-bottom: 10px;
+  background-color: #fff;
+}
+
+.page-firm .firm-desc .title {
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+.page-firm .firm-desc .text {
+  padding-top: 12px;
+  color: #666;
+  font-size: 12px;
+  text-align: justify;
+}
+
+.page-firm .pos-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+.page-firm .pos-item-hd {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-firm .pos-salary {
+  color: #fc6c38;
+}
+
+.page-firm .pos-item-bd span {
+  margin-right: 6px;
+  font-size: 12px;
+  color: #666666;
+}

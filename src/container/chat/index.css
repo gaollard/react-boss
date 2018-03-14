@@ -1,12 +1,13 @@
-.cmp-chat .am-list-line:after {
-  /*display: none!important;*/
-}
-
 .cmp-chat .mi-footer {
   z-index: 2;
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+.cmp-chat .mi-conetnt {
+  padding-top: 44px;
+  padding-bottom: 50px;
 }
 
 .cmp-chat .emoji-wrap {
@@ -26,4 +27,91 @@
 
 .cmp-chat .btn-send {
   margin-left: 4px;
+}
+
+.cmp-chat .mod-fix-btm {
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+  display: block;
+  width: 100%;
+}
+
+.cmp-chat .item-send,
+.cmp-chat .item-receive {
+  line-height: 1.5;
+}
+
+.cmp-chat .mod-fix-top {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.cmp-chat .item-receive .am-list-thumb {
+  position: absolute;
+  right: 0;
+}
+
+.cmp-chat .item-receive .am-list-line {
+  padding-right: 45px;
+}
+
+.cmp-chat .am-grid-icon {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.cmp-chat .am-grid-text {
+  margin-top: 0 !important;
+}
+
+.cmp-chat .btn-send {
+  margin-right: 10px;
+}
+
+.cmp-chat .am-list-body {
+  background-color: transparent;
+}
+
+.cmp-chat .am-list-body::after,
+.cmp-chat .am-list-body::before {
+  display: none!important;
+}
+
+.cmp-chat .chat-list {
+  padding: 0 10px;
+}
+
+.cmp-chat .chat-item {
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.cmp-chat .item-avatar {
+  float: left;
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+  border-radius: 2px;
+}
+
+.cmp-chat .item-text {
+  float: left;
+  padding: 8px;
+  min-width: 40px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.cmp-chat .item-send .item-avatar {
+  float: right;
+}
+
+.cmp-chat .item-send .item-text {
+  float: right;
+  margin-right: 10px;
 }

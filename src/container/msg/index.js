@@ -3,6 +3,7 @@ import {NavBar, ListView, List, Badge} from 'antd-mobile'
 import {connect} from 'react-redux'
 import {loadBosses} from "../../redux/boss.redux"
 import {host} from "../../config/index"
+import {receiveMsg, getMsgList} from '../../redux/chat.redux'
 import './index.css'
 
 const Item = List.Item;
@@ -12,12 +13,16 @@ const getLast = (arr = []) => {
   return arr[arr.length - 1];
 };
 
-@connect(state => state, {loadBosses})
+@connect(state => state, {
+  loadBosses,
+  receiveMsg,
+  getMsgList
+})
 export default class Msg extends Component {
 
   componentDidMount() {
-    const userList = this.props.boss.list;
-    if (!userList.length) {
+    const {chat, boss} = this.props;
+    if (!boss.list.length) {
       this.props.loadBosses();
     }
   }
@@ -35,7 +40,7 @@ export default class Msg extends Component {
       return b_last.createTime - a_last.createTime;
     });
     return (
-      <div className="cmp-bosses">
+      <div className="cpm-msg">
         <div className="mi-header">
           <NavBar>Boss</NavBar>
         </div>
@@ -43,15 +48,18 @@ export default class Msg extends Component {
           chatList.map((v, index) => {
             const last = getLast(v);
             const unread = v.filter(v => v.to === user._id && !v.read);
+            const targetId = user._id === last.from ? last.to : last.from;
+            const avatar = chat.users[targetId] ? chat.users[targetId].avatar : null;
+            const nickname = chat.users[targetId] ? chat.users[targetId].nickname : null;
             return (
               <Item
                 key={index}
                 arrow="horizontal"
-                thumb={host + 'uploads/' + user.avatar}
+                thumb={host + 'uploads/' + avatar}
                 extra={unread.length}
-                onClick={() => history.push(`/chat/${last.from}`)}
+                onClick={() => history.push(`/chat/${targetId}`)}
               >
-                <div className="user-name">{user.nickname}</div>
+                <div className="user-name">{nickname}</div>
                 <Brief>{last.content}</Brief>
               </Item>
             )

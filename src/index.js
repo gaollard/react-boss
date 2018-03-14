@@ -11,6 +11,7 @@ import Login from './container/login'
 import Chat from './container/chat'
 import Update from './container/update'
 import DashBoard from './component/dashboard'
+import Firm from './container/firm'
 
 import reducers from './redux/reducers'
 import registerServiceWorker from './registerServiceWorker'
@@ -31,7 +32,8 @@ const store = createStore(reducers, compose(
           {/*<Route path="/login" component={Login}/>*/}
           <Route path="/login" exact component={Login}/>
           <Route path="/update" exact component={Update}/>
-          <Route path="/chat/:from" component={Chat}/>
+          <Route path="/firm" exact component={Firm}/>
+          <Route path="/chat/:from" exact component={Chat}/>
           <Route component={DashBoard}/>
         </Switch>
       </div>

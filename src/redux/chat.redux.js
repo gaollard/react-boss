@@ -38,6 +38,13 @@ export function chat(state = initState, action) {
         ...state,
         msg: action.payload
       };
+    case MSG_RECEIVE:
+      const add = action.userId === action.payload.to ? 1 : 0;
+      return {
+        ...state,
+        msgs: [...state.msgs, action.payload],
+        unread: state.unread + add
+      };
     default:
       return state
   }
@@ -67,8 +74,10 @@ export function sendMsg({from, to, content}) {
 
 // 接受信息
 export function receiveMsg() {
+  console.log('接受信息');
   return (dispatch, getState) => {
     socket.on('chatMessageFromServer', data => {
+      console.log(data);
       dispatch({
         type: MSG_RECEIVE,
         payload: data,

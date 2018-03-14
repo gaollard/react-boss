@@ -17,8 +17,11 @@ import './index.css'
 export default class Dashboard extends Component {
 
   componentDidMount() {
-    this.props.receiveMsg();
-    this.props.getMsgList();
+    const { chat } = this.props;
+    if (!chat.msgs.length) {
+      this.props.receiveMsg();
+      this.props.getMsgList();
+    }
   }
 
   render() {

@@ -1,31 +1,31 @@
-.cmp-bosses .item-hd {
+.cpm-msg .item-hd {
   display: flex;
   padding: 6px 0;
   align-items: center;
 }
 
-.cmp-bosses .item-avatar {
+.cpm-msg .am-list-item img {
   width: 36px;
   height: 36px;
-  margin-right: 12px;
+  border-radius: 50%;
 }
 
-.cmp-bosses .item-hd-cont {
+.cpm-msg .item-hd-cont {
   flex:1;
 }
 
-.cmp-bosses .item-partner {
+.cpm-msg .item-partner {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.cmp-bosses .msg-name {
+.cpm-msg .msg-name {
   font-size: 16px;
 }
 
-.cmp-bosses .msg-cont,
-.cmp-bosses .msg-time {
+.cpm-msg .msg-cont,
+.cpm-msg .msg-time {
   color: #999;
   font-size: 10px;
 }

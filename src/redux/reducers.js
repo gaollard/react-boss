@@ -3,4 +3,5 @@ import {user} from './user.redux'
 import {boss} from './boss.redux'
 import {chat} from './chat.redux'
 import { company } from "./company.redux"
-export default combineReducers({user, boss, chat, company})
+import { job } from "./job.redux"
+export default combineReducers({user, boss, chat, company, job})

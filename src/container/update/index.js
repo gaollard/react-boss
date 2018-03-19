@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 import {List, Button, InputItem, Toast, WingBlank, NavBar, Icon} from 'antd-mobile'
 import {connect} from 'react-redux'
 import {updateUserInfo} from '../../redux/user.redux'
-import ReactAvatarEditor from 'react-avatar-editor'
-import Dropzone from 'react-dropzone'
 import {ImagePicker} from 'antd-mobile';
 import {api} from "../../config/index"
 import './index.css'

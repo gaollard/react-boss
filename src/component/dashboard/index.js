@@ -8,7 +8,6 @@ import Boss from '../../container/boss'
 import Genius from '../../container/genius'
 import Position from '../../container/position'
 import Companys from '../../container/companys'
-import Chat from '../../container/chat';
 import {getMsgList, receiveMsg} from '../../redux/chat.redux'
 import './index.css'
 
@@ -17,7 +16,7 @@ import './index.css'
 export default class Dashboard extends Component {
 
   componentDidMount() {
-    const { chat } = this.props;
+    const {chat, location, history} = this.props;
     if (!chat.msgs.length) {
       this.props.receiveMsg();
       this.props.getMsgList();
@@ -26,18 +25,17 @@ export default class Dashboard extends Component {
 
   render() {
     const user = this.props.user;
-    let pathname = this.props.location.pathname;
     const navList = [{
       path: '/position',
       text: '职位',
       icon: 'boss',
       component: Position
     }, {
-      path: '/company',
+      path: '/companys',
       text: '公司',
       icon: 'manage',
       component: Companys,
-      // hide: user.type === 'boss'
+      hide: user.type === 'boss'
     }, {
       path: '/boss',
       text: 'Boss',
@@ -61,19 +59,17 @@ export default class Dashboard extends Component {
       icon: 'me',
       component: Me
     }];
-    if (pathname !== '/') {
-      return (
-        <div className="page-wrap">
-          {<Switch>
-            {navList.map(v => <Route path={v.path} component={v.component} key={v.path}/>)}
-          </Switch>}
-          <div className="mi-footer">
-            <TabBar data={navList}/>
-          </div>
+    console.log(this.props);
+    return (
+      <div className="page-wrap">
+        {<Switch>
+          {navList.map(v => <Route path={v.path} exact component={v.component} key={v.path}/>)}
+          <Route component={Me}/>
+        </Switch>}
+        <div className="mi-footer">
+          <TabBar data={navList}/>
         </div>
-      )
-    } else {
-      return <Redirect to="/me"/>
-    }
+      </div>
+    )
   }
 }

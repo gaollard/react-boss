@@ -25,6 +25,10 @@ const initState = {
   ...userInfo
 };
 
+if(initState.userkey) {
+  initState.redirectUrl = '/me'
+}
+
 // **** reducer ****
 export function user(state = initState, action) {
   switch (action.type) {
@@ -34,10 +38,12 @@ export function user(state = initState, action) {
         ...action.payload.userInfo
       };
       cookie.set('userInfo', data);
+      let redirectUrl = data.nickname
+        ? '/me' : '/update';
       return {
         ...data,
         errMsg: '',
-        redirectUrl: '/genius'
+        redirectUrl
       };
     case ERROR:
       return {
@@ -92,5 +98,12 @@ export function updateUserInfo(params) {
     } else {
       dispatch({type: ERROR, payload: ret.msg})
     }
+  }
+}
+
+// 获取用户信息
+export function getUserInfo(params = {}) {
+  return async dispatch => {
+
   }
 }

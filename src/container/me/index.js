@@ -4,14 +4,14 @@ import {connect} from 'react-redux'
 import {host} from '../../config/'
 import defaultAvatar from './avatar.png'
 import {loginOut} from '../../redux/user.redux'
-import { Redirect } from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import './index.css'
 
 @connect(state => state, {loginOut})
 export default class Me extends Component {
   render() {
     const Item = List.Item;
-    const {user} = this.props;
+    const {user, history} = this.props;
     const avatar = user.avatar ? `${host}uploads/${user.avatar}` : defaultAvatar;
     return (
       <div className="cmp-me">
@@ -23,7 +23,7 @@ export default class Me extends Component {
           </div>
           <div className="btn-wrap">
             <div className="btn-fill" onClick={() => {
-              this.props.history.push('/update')
+              history.push('/update')
             }}>完善信息
             </div>
           </div>
@@ -47,6 +47,12 @@ export default class Me extends Component {
           </li>
         </ul>
         <div className="link-list">
+          <Item
+            className="link-item"
+            thumb={<i className="iconfont icon-activity"></i>}
+            arrow="horizontal"
+            onClick={() => history.push('/addJob')}
+          >发布职位</Item>
           <Item
             className="link-item"
             thumb={<i className="iconfont icon-activity"></i>}

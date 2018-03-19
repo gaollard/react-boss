@@ -1,8 +1,9 @@
 import request from '../utils/request';
 
-export const host = process.env.NODE_ENV === 'development'
-  ? '/proxy/'
-  : 'http://39.108.138.156:3000/';
+export const host =
+  process.env.NODE_ENV === 'development'
+    ? '/proxy/'
+    : 'http://39.108.138.156/';
 
 export const api = {
   /**
@@ -46,12 +47,34 @@ export const api = {
       headers: {'Content-Type': 'multipart/form-data'}
     })
   },
+
   // 加载信息
-  getMsgs (params = {}) {
+  getMsgs(params = {}) {
     return request.post(`${host}chat/msgs`, params)
   },
+
   // 获取公司列表
-  getCompanyList () {
+  getCompanyList() {
     return request.get(`${host}company/`)
+  },
+
+  // 获取公司详细资料
+  getCompanyInfoById({companyId}) {
+    return request.get(`${host}company/${companyId}`)
+  },
+
+  // 发布职位
+  addJob(params = {}) {
+    return request.post(`${host}job/add`, params)
+  },
+
+  // 职位列表
+  jobList (params = {}) {
+    return request.get(`${host}job`)
+  },
+
+  // 职位详情
+  loadJobDetails ({ jobId }) {
+    return request.get(`${host}job/${jobId}`)
   }
 };

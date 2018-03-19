@@ -84,3 +84,13 @@
   font-size: 12px;
   color: #666666;
 }
+
+.page-firm .firm-primary .text {
+  margin-right: 6px;
+}
+
+.page-firm .main-tab .is-active {
+  font-weight: bold;
+  font-size: 16px;
+  color: #1DA57A;
+}

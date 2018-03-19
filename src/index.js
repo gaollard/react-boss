@@ -12,6 +12,8 @@ import Chat from './container/chat'
 import Update from './container/update'
 import DashBoard from './component/dashboard'
 import Firm from './container/firm'
+import AddJob from './container/addJob'
+import Job from './container/job'
 
 import reducers from './redux/reducers'
 import registerServiceWorker from './registerServiceWorker'
@@ -26,14 +28,18 @@ const store = createStore(reducers, compose(
       <div>
         <Auth/>
         <Switch>
-          {/*<Route path="/bossinfo" component={BossInfo}></Route>*/}
-          {/*<Route path="/geniusinfo" component={ GeniusInfo}></Route>*/}
-          {/*<Route path="/register" component={Register}/>*/}
-          {/*<Route path="/login" component={Login}/>*/}
+          {/*职位详情*/}
+          <Route path="/job/:jobId" exact component={Job}/>
+          {/*登录*/}
           <Route path="/login" exact component={Login}/>
+          {/*更新用户资料*/}
           <Route path="/update" exact component={Update}/>
-          <Route path="/firm" exact component={Firm}/>
+          {/*公司详情*/}
+          <Route path="/company/:companyId" exact component={Firm}/>
+          {/*聊天详情*/}
           <Route path="/chat/:from" exact component={Chat}/>
+          {/*发布职位*/}
+          <Route path="/addJob" exact component={AddJob}/>
           <Route component={DashBoard}/>
         </Switch>
       </div>

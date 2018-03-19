@@ -1,0 +1,30 @@
+.page-job .job-banner {
+  padding: 15px 18px;
+  color: #fff;
+  background-color: #62d5c8;
+}
+
+.page-job .job-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-job .tag-list {
+  margin-top: 10px;
+}
+
+.page-job .tag-list span {
+  margin-right: 6px;
+}
+
+.page-job .tag-list .send-date {
+  float: right;
+  margin-right: 0;
+}
+
+.page-job .job-desc {
+  padding: 16px;
+  margin-top: 10px;
+  background-color: #fff;
+}

@@ -12,7 +12,7 @@ const MSG_READ = 'MSG_READ';
 const MSG_DISCONNECT = 'MSG_DISCONNECT';
 const ERROR = 'ERROR';
 
-const socket = io('ws://39.108.138.156:3000');
+const socket = io('ws://boss.airtlab.com:3000');
 socket.on('disconnect', res => {
   console.log(res);
 });

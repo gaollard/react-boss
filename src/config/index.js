@@ -1,9 +1,11 @@
 import request from '../utils/request';
 
-export const host =
-  process.env.NODE_ENV === 'development'
-    ? '/proxy/'
-    : 'http://39.108.138.156/';
+// export const host =
+//   process.env.NODE_ENV === 'development'
+//     ? '/proxy/'
+//     : 'http://boss.airtlab.com/';
+
+export const host = 'http://boss.airtlab.com/';
 
 export const api = {
   /**
